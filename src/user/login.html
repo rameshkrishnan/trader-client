@@ -1,0 +1,23 @@
+<section id="profile-view" class="container-fluid">
+
+    <h1>Login</h1>
+
+    <div class="row">
+
+        <div class="col-md-4 col-xs-12 col-sm-8 col-lg-4">
+            <form ng-submit="vm.onSubmit()">
+                <div class="form-group">
+                    <label for="username">Select the Username</label>
+                    <select class="form-control" data-ng-model="vm.selectUserId">
+                        <option data-ng-repeat="user in vm.users" value="{{user.id}}">{{user.name}}</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Login
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</section>

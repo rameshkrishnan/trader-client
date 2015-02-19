@@ -1,0 +1,51 @@
+<section id="dashboard-view" class="container-fluid">
+
+    <trade></trade>
+    
+    <div class="row row-margin-top">
+
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Creation Time</th>
+                                    <th>Side</th>
+                                    <th>Symbol</th>
+                                    <th>Qty</th>
+                                    <th>Qty Placed</th>
+                                    <th>Qty Executed</th>
+                                    <th>Limit Price</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Trader Id</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr data-ng-repeat="order in vm.orders">
+                                    <td>{{order.id}}</td>
+                                    <td>{{order.creationTime}}</td>
+                                    <td>{{order.side}}</td>
+                                    <td>{{order.symbol}}</td>
+                                    <td>{{order.quantity}}</td>
+                                    <td>{{order.quantityPlaced}}</td>
+                                    <td>{{order.quantityExecuted}}</td>
+                                    <td>{{order.limitPrice}}</td>
+                                    <td>{{order.priority}}</td>
+                                    <td>{{order.status}}</td>
+                                    <td>{{order.traderId}}</td>
+                                </tr>
+                                <tr data-ng-if="vm.orders.length <= 0">
+                                    <td colspan="11" class="alert alert-warning" role="alert">no orders available</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+    </div><!-- row -->
+
+</section>

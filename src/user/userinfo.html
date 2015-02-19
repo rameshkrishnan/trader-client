@@ -1,0 +1,4 @@
+<form class="navbar-form navbar-right" ng-hide="dvm.username === null" ng-show="dvm.username !== null">
+    <span class="label-username" data-ng-bind="dvm.username"></span>
+    <button class="btn btn-danger btn-sm" data-ng-click="dvm.signout()">Sign Out</button>
+</form>

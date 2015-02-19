@@ -1,0 +1,57 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    background-color:#efefef;
+}
+
+/* Remove border to delete the 1px line */
+.navbar-fixed-top {
+    border: 0;
+}
+.label-username {
+    color:#fff;
+    font-size:1.5em;
+}
+.row-margin-top {
+    margin-top:10px;
+}
+section#content {
+    background-color:#fff;
+    padding:10px 0;
+    border:1px solid #ccc;
+}
+footer {
+    text-align:center;
+    padding:15px;
+}
+@media (max-width: 360px) {
+  .btn-responsive {
+    padding:2px 3px 5px;
+    font-size:85%;
+    line-height: 1.9;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:2px 3px;
+    font-size:90%;
+    line-height: 1.9;
+  }
+}
+
+.ngdialog-message {
+    padding-top:25px;
+}
+.ngdialog-message:after{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    content: "Create Multiple Trades";
+}
