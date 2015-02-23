@@ -25,17 +25,17 @@
 
                             <tbody>
                                 <tr data-ng-repeat="order in vm.orders">
-                                    <td>{{order.id}}</td>
-                                    <td>{{order.creationTime}}</td>
-                                    <td>{{order.side}}</td>
-                                    <td>{{order.symbol}}</td>
-                                    <td>{{order.quantity}}</td>
-                                    <td>{{order.quantityPlaced}}</td>
-                                    <td>{{order.quantityExecuted}}</td>
-                                    <td>{{order.limitPrice}}</td>
-                                    <td>{{order.priority}}</td>
-                                    <td>{{order.status}}</td>
-                                    <td>{{order.traderId}}</td>
+                                    <td data-ng-bind="order.id"></td>
+                                    <td data-ng-bind="order.creationTime"></td>
+                                    <td data-ng-bind="order.side"></td>
+                                    <td data-ng-bind="order.symbol"></td>
+                                    <td data-ng-bind="order.quantity"></td>
+                                    <td data-ng-bind="order.quantityPlaced"></td>
+                                    <td data-ng-bind="order.quantityExecuted"></td>
+                                    <td data-ng-bind="order.limitPrice"></td>
+                                    <td data-ng-bind="order.priority"></td>
+                                    <td data-ng-bind="order.status"></td>
+                                    <td data-ng-bind="order.traderId"></td>
                                 </tr>
                                 <tr data-ng-if="vm.orders.length <= 0">
                                     <td colspan="11" class="alert alert-warning" role="alert">no orders available</td>

@@ -24,7 +24,7 @@ footer {
     text-align:center;
     padding:15px;
 }
-@media (max-width: 360px) {
+@media (max-width: 460px) {
   .btn-responsive {
     padding:2px 3px 5px;
     font-size:85%;
@@ -33,13 +33,7 @@ footer {
   }
 }
 
-@media (min-width: 361px) and (max-width: 992px) {
-  .btn-responsive {
-    padding:2px 3px;
-    font-size:90%;
-    line-height: 1.9;
-  }
-}
+
 
 .ngdialog-message {
     padding-top:25px;

@@ -30,7 +30,7 @@
 
                     var sideIndex = random(0,1),
                         instrumentsIndex = random(0, instruments.length-1),
-                        quantity = random(1000, 10000);
+                        quantity = random(1000, 20000);
 
                     var orderData = {
                         side: side[sideIndex],

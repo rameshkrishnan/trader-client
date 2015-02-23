@@ -1,49 +1,51 @@
-/* ----- Sidebar ----- */
-
-/* Hide for mobile, show later */
-.sidebar {
-    display: none;
+#chart {
+    min-height:100px;
 }
-@media (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 140px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 5px 20px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        border-right: 1px solid $color-border;
+#chart svg {
+    margin:10px;
+}
+ul.order {
+    list-style-type: none;
+    position:absolute;
+    right:25px;
+}
+ul.order li {
+    line-height:30px;
+}
+ul.order li span {
+    width:18px;
+    height:18px;
+    display:inline-block;
+    vertical-align: middle;
+}
+ul.order li:nth-child(1) span {
+    background-color:#fff4d2
+}
+ul.order li:nth-child(2) span {
+    background-color:#fecc88
+}
+ul.order li:nth-child(3) span {
+    background-color:#ff8000
+}
+
+@media (min-width:361px) and (max-width:768px) {
+    ul.order {
+        top:3px;
+    }
+    ul.order li {
+        display:inline-block;
     }
 }
 
-.sidebar dt {
-    color: $color-soft;
-    font-weight: normal;
+@media (max-width:480px) {
+    ul.order {
+        position:static;
+    }
+    ul.order li {
+        display:block;
+    }
 }
 
-.sidebar dd {
-    font-size: 24px;
-    border-bottom: 1px solid $color-border;
-    margin-bottom: 20px;
-}
-
-.medialinks {
-    margin-top: 30px;
-}
-
-/* ----- Main Content ----- */
-.main {
-  padding: 20px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
 
 /* ----- Chart ----- */
 .chart-column {
@@ -53,11 +55,10 @@
 .chart-container {
     width: 100%;
 }
-
-.bar rect {
-    fill: #F89F1B;
-    stroke: white;
+.plot {
+    margin-top:200px;
 }
+
 
 .axis text {
     font: 10px sans-serif;
@@ -68,4 +69,12 @@
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
+}
+
+.grid .tick line{
+    stroke: #ccc !important;
+    opacity: 0.7;
+}
+.grid path {
+    stroke-width:0;
 }
