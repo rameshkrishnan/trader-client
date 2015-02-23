@@ -31,6 +31,12 @@ Few Screenshots
 #### Dashboard - Mobile View
 ![Dashboard - Mobile View](assets/mobile-dashboard.png)
 
+#### Chart View
+![Chart View](assets/chart.png)
+
+#### Chart View (Responsive)
+![Chart View (Responsive)](assets/chart-responsive.png)
+
 
 ##### Note
 Make sure you have "bower_components\socket.io-client\bower.json" file, which was not available in original repo.
