@@ -31,7 +31,7 @@
             });
         }
 
-    };
+    }
     
     UserInfoController.$inject = ['userSessionService'];
     
@@ -41,9 +41,9 @@
         var dvm = this;
         
         dvm.signout = function() {
-            userSessionService.setUserId(0);
+            userSessionService.clearSession();
         };
         dvm.username = userSessionService.getUsername();
-    };
+    }
     
 })();

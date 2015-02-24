@@ -12,7 +12,7 @@
         var vm = this;
 
         vm.orders = null;
-    
+
         vm.deleteAll = deleteAll;
         vm.refresh = refresh;
 
@@ -33,7 +33,7 @@
             return orderService.getAll().then(function(data) {
                 vm.orders = data;
                 return vm.orders;
-            })
+            });
         }
         
         function refresh() {
@@ -49,7 +49,7 @@
             socketService.on('orderCreatedEvent', orderCreatedEvent);
             socketService.on('placementCreatedEvent', placementCreatedEvent);
             
-            function allOrdersDeletedEvent(data) {
+            function allOrdersDeletedEvent() {
                 vm.orders = [];
                 logger.log('allOrdersDeletedEvent');
             }

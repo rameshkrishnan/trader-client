@@ -30,18 +30,29 @@
 
                     var sideIndex = random(0,1),
                         instrumentsIndex = random(0, instruments.length-1),
-                        quantity = random(1000, 20000);
+                        quantity = random(1000, 20000),
+                        price = random(1,1000);
 
                     var orderData = {
                         side: side[sideIndex],
                         symbol: instruments[instrumentsIndex].symbol,
                         quantity: quantity,
-                        limitPrice: 426,
+                        limitPrice: price,
                         traderId: userId
                     };
-                    $http.post(url, orderData);
+                    $http.post(url, orderData)
+                        .then(postComplete(i))
+                        .catch(postError);
                 }
             });
+
+            function postComplete(i) {
+                logger.info('Order ' + i + ' has been successfully placed to server for execution');
+            }
+            
+            function postError(message) {
+                exception.catcher('XHP Failed for orderService.createOrder')(message);
+            }
 
         }
 
@@ -49,7 +60,7 @@
             return $http.delete(url)
                 .then(getComplete)
                 .catch(function(message) {
-                    exception.catcher('XHR Failed for orderService.deleteAll')(message)
+                    exception.catcher('XHR Failed for orderService.deleteAll')(message);
                 });
 
             function getComplete() {

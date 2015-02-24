@@ -10,9 +10,9 @@
         .module('app.core')
         .filter('getBy', getBy);
 
-    getBy.$inject = ['$filter'];
+    getBy.$inject = [];
     /* @ngInject */
-    function getBy($filter) {
+    function getBy() {
         return function(keyFind, valueFind, collection) {
             var i=0, len = collection.length;
             for(;i<len;i++){

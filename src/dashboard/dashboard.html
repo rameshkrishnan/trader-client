@@ -8,7 +8,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>#</th>
                                     <th>Creation Time</th>
                                     <th>Side</th>
@@ -25,17 +25,17 @@
 
                             <tbody>
                                 <tr data-ng-repeat="order in vm.orders">
-                                    <td data-ng-bind="order.id"></td>
-                                    <td data-ng-bind="order.creationTime"></td>
-                                    <td data-ng-bind="order.side"></td>
-                                    <td data-ng-bind="order.symbol"></td>
-                                    <td data-ng-bind="order.quantity"></td>
-                                    <td data-ng-bind="order.quantityPlaced"></td>
-                                    <td data-ng-bind="order.quantityExecuted"></td>
-                                    <td data-ng-bind="order.limitPrice"></td>
-                                    <td data-ng-bind="order.priority"></td>
-                                    <td data-ng-bind="order.status"></td>
-                                    <td data-ng-bind="order.traderId"></td>
+                                    <td data-ng-bind="order.id" class="text-right"></td>
+                                    <td data-ng-bind="order.creationTime | date:'medium'"></td>
+                                    <td data-ng-bind="order.side" class="text-center"></td>
+                                    <td data-ng-bind="order.symbol" class="text-center"></td>
+                                    <td data-ng-bind="order.quantity | number" class="text-right"></td>
+                                    <td data-ng-bind="order.quantityPlaced | number" class="text-right"></td>
+                                    <td data-ng-bind="order.quantityExecuted | number" class="text-right"></td>
+                                    <td data-ng-bind="order.limitPrice | currency" class="text-right"></td>
+                                    <td data-ng-bind="order.priority" class="text-right"></td>
+                                    <td data-ng-bind="order.status" class="text-center"></td>
+                                    <td data-ng-bind="order.traderId" class="text-center"></td>
                                 </tr>
                                 <tr data-ng-if="vm.orders.length <= 0">
                                     <td colspan="11" class="alert alert-warning" role="alert">no orders available</td>

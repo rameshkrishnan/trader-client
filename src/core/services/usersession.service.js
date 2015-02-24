@@ -12,16 +12,22 @@
         
         if(typeof Storage === undefined) {
             exception.catcher('Failed to create user session')('Storage not supported by the browser');
-            $location.path('/');
+            $location.path('/login');
         }
 
         var service = {
+            clearSession: clearSession,
             getUsername: getUsername,
             getUserId: getUserId,
             setUserId: setUserId
         };
         
         return service;
+        
+        function clearSession() {
+            sessionStorage.removeItem('trader_id');
+            sessionStorage.removeItem('trader_name');
+        }
         
         function getUsername() {
             return sessionStorage.getItem('trader_name');
@@ -32,17 +38,15 @@
         }
 
         function setUserId(id) {
-            return userService.get(id).then(function(user){
-                if(user !== null) {
-                    sessionStorage.setItem('trader_id', user.id);
-                    sessionStorage.setItem('trader_name', user.name);
-                    return 1;
-                } else {
-                    sessionStorage.removeItem('trader_id');
-                    sessionStorage.removeItem('trader_name');
-                }
+            var user = userService.get(id)
+            if(user !== null) {
+                sessionStorage.setItem('trader_id', user.id);
+                sessionStorage.setItem('trader_name', user.name);
+                return 1;
+            } else {
+                clearSession();
                 return 0;
-            });
+            }
         }
 
     }

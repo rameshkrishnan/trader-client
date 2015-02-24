@@ -9,12 +9,11 @@
 
 	/* $ngInject */
 	function socketService($rootScope, api) {
-		var socket = io(api);
-
-		var service = {
-			on: on,
-			remove: removeSocket
-		}
+		var socket = io(api),
+            service = {
+                on: on,
+                remove: removeSocket
+            };
 
 		return service;
 

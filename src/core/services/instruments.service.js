@@ -19,13 +19,14 @@
 
 		function get() {
 			return $http.get(url)
-				.then(getComplete)
-				.catch(function(message) {
-                    exception.catcher('XHR Failed for orderService.deleteAll')(message)
-                });
+				.then(getComplete, onError);
 
             function getComplete(data) {
                 return data.data;
+            }
+            
+			function onError(message) {
+                exception.catcher('XHR Failed for orderService.deleteAll')(message);
             }
 		}
 
