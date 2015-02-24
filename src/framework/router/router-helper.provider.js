@@ -99,14 +99,14 @@
                     }
                 );
             }
-            
+
             function verifyLogin() {
                 $rootScope.$on('$stateChangeStart',
                     function(event, toState, toParams, fromState, fromParams) {
                         var userId = userSessionService.getUserId();
-                        if(toState.settings.loginRequired === true && userId === null) {
+                        if (toState.settings.loginRequired === true && userId === null) {
                             $location.path('/login');
-                        } else if(toState.url === '/login' && userId !== null) {
+                        } else if (toState.url === '/login' && userId !== null) {
                             $location.path('/');
                         }
                     }

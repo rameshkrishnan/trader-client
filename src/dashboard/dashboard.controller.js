@@ -24,7 +24,7 @@
                 logger.info('Activated Dashboard View');
             });
         }
-        
+
         function deleteAll() {
             orderService.deleteAll();
         }
@@ -35,7 +35,7 @@
                 return vm.orders;
             });
         }
-        
+
         function refresh() {
             getOrders();
             logger.info('Orders refreshed');
@@ -48,7 +48,7 @@
             socketService.on('executionCreatedEvent', executionCreatedEvent);
             socketService.on('orderCreatedEvent', orderCreatedEvent);
             socketService.on('placementCreatedEvent', placementCreatedEvent);
-            
+
             function allOrdersDeletedEvent() {
                 vm.orders = [];
                 logger.log('allOrdersDeletedEvent');
@@ -73,18 +73,17 @@
                 logger.log('orderCreatedEvent');
             }
             function placementCreatedEvent(data) {
-                
+
                 var index = $filter('getIndexBy')('id', data.orderId, vm.orders),
                     item = vm.orders[index];
 
                 item.quantityPlaced += data.quantityPlaced;
                 item.status = data.status;
-                
+
                 $scope.$apply();
 
                 logger.log('placementCreatedEvent #' + data.orderId);
             }
-         }
-
+        }
     }
 })();

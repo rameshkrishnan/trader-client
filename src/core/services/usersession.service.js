@@ -1,16 +1,16 @@
-(function(){
+(function() {
     'use strict';
-    
+
     angular
         .module('app.core')
         .factory('userSessionService', userSessionService);
-        
+
     userSessionService.$inject = ['exception', '$location', 'userService'];
-    
+
     /* @ngInject */
     function userSessionService(exception, $location, userService) {
-        
-        if(typeof Storage === undefined) {
+
+        if ( typeof Storage === undefined ) {
             exception.catcher('Failed to create user session')('Storage not supported by the browser');
             $location.path('/login');
         }
@@ -21,25 +21,25 @@
             getUserId: getUserId,
             setUserId: setUserId
         };
-        
+
         return service;
-        
+
         function clearSession() {
             sessionStorage.removeItem('trader_id');
             sessionStorage.removeItem('trader_name');
         }
-        
+
         function getUsername() {
             return sessionStorage.getItem('trader_name');
         }
-        
+
         function getUserId() {
             return sessionStorage.getItem('trader_id');
         }
 
         function setUserId(id) {
-            var user = userService.get(id)
-            if(user !== null) {
+            var user = userService.get(id);
+            if ( user !== null ) {
                 sessionStorage.setItem('trader_id', user.id);
                 sessionStorage.setItem('trader_name', user.name);
                 return 1;
@@ -48,6 +48,5 @@
                 return 0;
             }
         }
-
     }
 })();

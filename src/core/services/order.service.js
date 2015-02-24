@@ -6,10 +6,11 @@
         .module('app.core')
         .factory('orderService', orderService);
 
-    orderService.$inject = ['$http', 'exception', 'api', 'userSessionService', 'logger', '$filter','instrumentService'];
+    orderService.$inject = ['$http', 'exception', 'api', 'userSessionService',
+                            'logger', '$filter', 'instrumentService'];
     /* @ngInject */
-    function orderService($http, exception, api, userSessionService, logger, $filter,instrumentService) {
-        
+    function orderService($http, exception, api, userSessionService, logger, $filter, instrumentService) {
+
         var url = api + '/orders',
             service = {
                 createOrder: createOrder,
@@ -21,17 +22,17 @@
 
         function createOrder(qty) {
 
-            instrumentService.get().then(function(instruments) {
+            instrumentService.get().then(function (instruments) {
 
                 var userId = userSessionService.getUserId(),
-                    side = ['Buy','Sell'];
+                    side = ['Buy', 'Sell'];
 
-                for(var i=1;i<=qty;i++) {
+                for (var i = 1; i <= qty; i++) {
 
-                    var sideIndex = random(0,1),
-                        instrumentsIndex = random(0, instruments.length-1),
+                    var sideIndex = random(0, 1),
+                        instrumentsIndex = random(0, instruments.length - 1),
                         quantity = random(1000, 20000),
-                        price = random(1,1000);
+                        price = random(1, 1000);
 
                     var orderData = {
                         side: side[sideIndex],
@@ -49,7 +50,7 @@
             function postComplete(i) {
                 logger.info('Order ' + i + ' has been successfully placed to server for execution');
             }
-            
+
             function postError(message) {
                 exception.catcher('XHP Failed for orderService.createOrder')(message);
             }

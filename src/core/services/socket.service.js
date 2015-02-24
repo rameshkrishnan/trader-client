@@ -1,27 +1,30 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('app.core')
-		.factory('socketService', socketService);
+    angular
+        .module('app.core')
+        .factory('socketService', socketService);
 
-	socketService.$inject = ['$rootScope', 'api'];
+    socketService.$inject = ['$rootScope', 'api'];
 
-	/* $ngInject */
-	function socketService($rootScope, api) {
-		var socket = io(api),
+    /* $ngInject */
+    function socketService($rootScope, api) {
+
+        var socket = window.io(api),
             service = {
                 on: on,
                 remove: removeSocket
             };
 
-		return service;
+        return service;
 
-		function on(eventName, callback) {
-			socket.on(eventName, callback);
-		}
-		function removeSocket(){
-			socket.removeAllListeners();
-		}	
-	}
+        function on(eventName, callback) {
+            socket.on(eventName, callback);
+        }
+
+        function removeSocket() {
+            socket.removeAllListeners();
+        }
+    }
+
 })();

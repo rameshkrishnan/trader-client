@@ -50,7 +50,7 @@
             }
         }
     }
-    
+
     function BarChart(base) {
         this.base = base;
 
@@ -91,7 +91,7 @@
     };
 
     BarChart.prototype.draw = function(data) {
-        
+
         var self = this,
             make_x_axis = function() {
                 return d3.svg.axis()
@@ -109,12 +109,12 @@
             'translate(25,' + (this.axisMargin) + ')'
         );
 
-        this.x.domain([0,100]);
-        this.y.domain([0,data.length]);
+        this.x.domain([0, 100]);
+        this.y.domain([0, data.length]);
 
         //this.xAxis.tickValues(this.x.domain());
         this.xAxisBase.call(this.xAxis);
-        
+
         this.xAxisBase
             .append('g')
             .attr('class', 'grid')
@@ -125,7 +125,7 @@
             );
 
         this.plotBase.selectAll('.bar').remove();
-        
+
         var barsEnter = this.plotBase.selectAll('.bar')
                             .data(data)
                             .enter()
@@ -136,19 +136,19 @@
             .append('rect')
             .attr({
                 height : self.bh,
-                width : function(d){ return self.givemexscale(d.quantity)(d.quantity); },
+                width : function(d) { return self.givemexscale(d.quantity)(d.quantity); },
                 x : 20,
-                y : function(d,i){ return i * (self.bh + 5); },
+                y : function(d, i) { return i * (self.bh + 5); },
                 fill : '#fff4d2'
             });
-        
+
         barsEnter
             .append('rect')
             .attr({
                 height : self.bh,
-                width : function(d){ return self.givemexscale(d.quantity)(d.quantityPlaced); },
+                width : function(d) { return self.givemexscale(d.quantity)(d.quantityPlaced); },
                 x : 20,
-                y : function(d,i){ return i * (self.bh + 5); },
+                y : function(d, i) { return i * (self.bh + 5); },
                 fill : '#fecc88'
             });
 
@@ -156,48 +156,48 @@
             .append('rect')
             .attr({
                 height : self.bh,
-                width : function(d){ return self.givemexscale(d.quantity)(d.quantityExecuted); },
+                width : function(d) { return self.givemexscale(d.quantity)(d.quantityExecuted); },
                 x : 20,
-                y : function(d,i){ return i * (self.bh + 5); },
+                y : function(d, i) { return i * (self.bh + 5); },
                 fill : '#ff8000'
             });
 
         barsEnter
             .append('text')
             .attr({
-                x : self.w-30,
-                y : function(d,i){ return 20 + i * (self.bh + 5); },
+                x : self.w - 30,
+                y : function(d, i) { return 20 + i * (self.bh + 5); },
                 fill : '#000',
                 style : 'text-anchor: end'
             })
-            .text(function(d){ return d.quantity; } );
-        
+            .text(function(d) { return d.quantity; } );
+
         barsEnter
             .append('line')
             .attr({
-                x1 : self.w-105,
-                y1 : function(d,i){ return i * (self.bh + 5) + self.bh; },
-                x2 : self.w-10,
-                y2 : function(d,i){ return i * (self.bh + 5) + self.bh; }
+                x1 : self.w - 105,
+                y1 : function(d, i) { return i * (self.bh + 5) + self.bh; },
+                x2 : self.w - 10,
+                y2 : function(d, i) { return i * (self.bh + 5) + self.bh; }
             })
             .attr('stroke-width', 1)
             .attr('stroke', '#fecc88');
-        
+
         barsEnter
             .append('text')
             .attr({
                 x : 16,
-                y : function(d,i){ return i * (self.bh + 5) + ((self.bh + 5) / 2); },
+                y : function(d, i) { return i * (self.bh + 5) + ((self.bh + 5) / 2); },
                 fill : '#000',
                 style : 'text-anchor: end'
             })
-            .text(function(d){ return d.id; });
+            .text(function(d) { return d.id; });
     };
-    
-    BarChart.prototype.givemexscale = function (d){
+
+    BarChart.prototype.givemexscale = function (d) {
         return d3.scale.linear()
-            .domain([0,d])
-            .range([0,this.w-125]);
+            .domain([0, d])
+            .range([0, this.w - 125]);
     };
 
 })();

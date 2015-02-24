@@ -1,18 +1,18 @@
-(function(){
+(function() {
     'use strict';
-    
+
     angular
         .module('app.user')
         .run(appRun);
-        
+
     appRun.$inject = ['routerHelper'];
-    
+
     /* @ngInject */
-    function appRun(routerHelper){
+    function appRun(routerHelper) {
         routerHelper.configureStates(getStates());
     }
-    
-    function getStates(){
+
+    function getStates() {
         return [
             {
                 state: 'login',

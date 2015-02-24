@@ -7,9 +7,10 @@
         .factory('userService', userService);
 
     userService.$inject = ['$http', '$location', '$filter', 'exception', 'api', 'logger'];
+
     /* @ngInject */
     function userService($http, $location, $filter, exception, api, logger) {
-        
+
         var users = null,
             service = {
                 getAll: getAllUsers,
@@ -17,11 +18,11 @@
             };
 
         return service;
-        
+
         function get(id) {
             return $filter('getBy')('id', id, users);
         }
-        
+
         function getAllUsers() {
             return $http.get(api + '/users')
                 .then(getComplete)
@@ -37,4 +38,5 @@
             }
         }
     }
+
 })();

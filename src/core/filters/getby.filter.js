@@ -14,9 +14,9 @@
     /* @ngInject */
     function getBy() {
         return function(keyFind, valueFind, collection) {
-            var i=0, len = collection.length;
-            for(;i<len;i++){
-                if(collection[i][keyFind] === valueFind){
+            var i = 0, len = collection.length;
+            for (; i < len; i++) {
+                if (collection[i][keyFind] === valueFind) {
                     return collection[i];
                 }
             }
