@@ -9,6 +9,6 @@
         'fw.exception', 'fw.logger', 'fw.router',
 
         // 3rd Party modules
-        'ui.router', 'ngDialog'
+        'ui.router'
     ]);
 })();

@@ -52,7 +52,7 @@
             }
 
             function postError(message) {
-                exception.catcher('XHP Failed for orderService.createOrder')(message);
+                exception.catcher('XHR Failed for orderService.createOrder')(message);
             }
 
         }

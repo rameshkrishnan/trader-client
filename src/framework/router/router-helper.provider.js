@@ -24,9 +24,9 @@
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'userSessionService'];
+        RouterHelper.$inject = ['$rootScope', '$state', 'logger', 'userSessionService'];
         /* @ngInject */
-        function RouterHelper($location, $rootScope, $state, logger, userSessionService) {
+        function RouterHelper($rootScope, $state, logger, userSessionService) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -76,7 +76,7 @@
                             (error.data || '') + '. <br/>' + (error.statusText || '') +
                             ': ' + (error.status || '');
                         logger.warn(msg, [toState]);
-                        $location.url('/login');
+                        $state.go('login');
                     }
                 );
             }
@@ -105,9 +105,11 @@
                     function(event, toState, toParams, fromState, fromParams) {
                         var userId = userSessionService.getUserId();
                         if (toState.settings.loginRequired === true && userId === null) {
-                            $location.path('/login');
-                        } else if (toState.url === '/login' && userId !== null) {
-                            $location.path('/');
+                            event.preventDefault();
+                            $state.go('login');
+                        } else if (toState.name === 'login' && userId !== null) {
+                            event.preventDefault();
+                            $state.go('dashboard.table');
                         }
                     }
                 );

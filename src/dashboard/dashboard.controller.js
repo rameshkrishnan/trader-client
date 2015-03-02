@@ -5,16 +5,18 @@
         .module('app.dashboard')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['accountService', 'logger', 'orderService', 'socketService', '$filter', '$scope'];
+    DashboardController.$inject = [ 'logger', 'orderService', 'socketService', '$filter', '$scope', '$state'];
 
     /* @ngInject */
-    function DashboardController(accountService, logger, orderService, socketService, $filter, $scope) {
+    function DashboardController(logger, orderService, socketService, $filter, $scope, $state) {
         var vm = this;
 
         vm.orders = null;
 
         vm.deleteAll = deleteAll;
+        vm.go = go;
         vm.refresh = refresh;
+        vm.submitTrade = submitTrade;
 
         setEvents();
         activate();
@@ -36,6 +38,10 @@
             });
         }
 
+        function go(state) {
+            $state.go(state);
+        }
+
         function refresh() {
             getOrders();
             logger.info('Orders refreshed');
@@ -43,6 +49,8 @@
 
         function setEvents() {
 
+            angular.element('#tradeModal').on('hidden.bs.modal', clearTradeForm);
+            
             socketService.remove();
             socketService.on('allOrdersDeletedEvent', allOrdersDeletedEvent);
             socketService.on('executionCreatedEvent', executionCreatedEvent);
@@ -52,6 +60,10 @@
             function allOrdersDeletedEvent() {
                 vm.orders = [];
                 logger.log('allOrdersDeletedEvent');
+            }
+            function clearTradeForm() {
+                vm.qty = null;
+                angular.element('input[name="qty"]').val(null);
             }
             function executionCreatedEvent(data) {
 
@@ -84,6 +96,12 @@
 
                 logger.log('placementCreatedEvent #' + data.orderId);
             }
+
+        }
+
+        function submitTrade() {
+            orderService.createOrder(vm.qty);
+            angular.element('#tradeModal').modal('hide');
         }
     }
 })();

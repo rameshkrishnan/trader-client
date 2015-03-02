@@ -6,10 +6,10 @@
         .module('app.core')
         .factory('userService', userService);
 
-    userService.$inject = ['$http', '$location', '$filter', 'exception', 'api', 'logger'];
+    userService.$inject = ['$http', '$state', '$filter', 'exception', 'api', 'logger'];
 
     /* @ngInject */
-    function userService($http, $location, $filter, exception, api, logger) {
+    function userService($http, $state, $filter, exception, api, logger) {
 
         var users = null,
             service = {
@@ -28,7 +28,7 @@
                 .then(getComplete)
                 .catch(function(message) {
                     exception.catcher('XHR Failed for userService.getAllUsers')(message);
-                    $location.url('/login');
+                    $state.go('login');
                 });
 
             function getComplete(data) {

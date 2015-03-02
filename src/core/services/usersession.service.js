@@ -5,14 +5,14 @@
         .module('app.core')
         .factory('userSessionService', userSessionService);
 
-    userSessionService.$inject = ['exception', '$location', 'userService'];
+    userSessionService.$inject = ['exception', '$state', 'userService'];
 
     /* @ngInject */
-    function userSessionService(exception, $location, userService) {
+    function userSessionService(exception, $state, userService) {
 
         if ( typeof Storage === undefined ) {
             exception.catcher('Failed to create user session')('Storage not supported by the browser');
-            $location.path('/login');
+            $state.go('login');
         }
 
         var service = {

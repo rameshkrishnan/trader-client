@@ -5,10 +5,10 @@
         .module('app.user')
         .directive('userinfo', userInfoDirective);
 
-    userInfoDirective.$inject = ['userSessionService', '$location'];
+    userInfoDirective.$inject = ['userSessionService', '$state'];
 
     /* @ngInject */
-    function userInfoDirective(userSessionService, $location) {
+    function userInfoDirective(userSessionService, $state) {
 
         var directive = {
             restrict: 'E',
@@ -27,7 +27,7 @@
             });
             scope.$on('userLoggedOut', function() {
                 scope.dvm.username = null;
-                $location.path('/login');
+                $state.go('login');
             });
         }
 

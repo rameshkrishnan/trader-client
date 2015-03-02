@@ -17,10 +17,16 @@
             {
                 state: 'dashboard',
                 config: {
-                    url: '/',
                     templateUrl: 'dashboard/dashboard.html',
                     controller: 'DashboardController',
-                    controllerAs: 'vm',
+                    controllerAs: 'vm'
+                }
+            },
+            {
+                state: 'dashboard.table',
+                config: {
+                    url: '/',
+                    templateUrl: 'dashboard/dashboard.table.html',
                     title: 'Dashboard',
                     settings: {
                         nav: 1,
@@ -30,12 +36,10 @@
                 }
             },
             {
-                state: 'dashboard-chart',
+                state: 'dashboard.chart',
                 config: {
-                    url: '/chart',
-                    templateUrl: 'dashboard/chart.html',
-                    controller: 'DashboardController',
-                    controllerAs: 'vm',
+                    url: 'chart',
+                    templateUrl: 'dashboard/dashboard.chart.html',
                     title: 'Chart',
                     settings: {
                         nav: 2,

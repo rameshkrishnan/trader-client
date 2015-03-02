@@ -5,10 +5,10 @@
         .module('app.user')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope', '$location', 'userService', 'userSessionService', 'logger'];
+    LoginController.$inject = ['$scope', '$state', 'userService', 'userSessionService', 'logger'];
 
     /* @ngInject */
-    function LoginController($scope, $location, userService, userSessionService, logger) {
+    function LoginController($scope, $state, userService, userSessionService, logger) {
         var vm = this;
 
         vm.selectUserId = null;
@@ -35,7 +35,7 @@
             if (success) {
                 $scope.$emit('userLoggedIn');
                 logger.info('User ' + vm.selectUserId + ' loggedin.');
-                $location.path('/');
+                $state.go('dashboard.table');
             }
         }
     }
