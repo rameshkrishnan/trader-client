@@ -37,6 +37,9 @@ Few Screenshots
 #### Chart View (Responsive)
 ![Chart View (Responsive)](assets/chart-responsive.png)
 
+#### Chart - Mobile View
+![Chart - Mobile View](assets/chart-mobile.png)
+
 
 ##### Note
 Make sure you have "bower_components\socket.io-client\bower.json" file, which was not available in original repo.

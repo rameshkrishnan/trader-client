@@ -50,7 +50,7 @@
         function setEvents() {
 
             angular.element('#tradeModal').on('hidden.bs.modal', clearTradeForm);
-            
+
             socketService.remove();
             socketService.on('allOrdersDeletedEvent', allOrdersDeletedEvent);
             socketService.on('executionCreatedEvent', executionCreatedEvent);
@@ -76,7 +76,7 @@
 
                 $scope.$apply();
 
-                logger.log('executionCreatedEvent #' + data.orderId);
+                logger.log('executionCreatedEvent #' + data.orderId, data.quantityExecuted);
             }
             function orderCreatedEvent(data) {
 
@@ -94,7 +94,7 @@
 
                 $scope.$apply();
 
-                logger.log('placementCreatedEvent #' + data.orderId);
+                logger.log('placementCreatedEvent #' + data.orderId, data.quantityPlaced);
             }
 
         }

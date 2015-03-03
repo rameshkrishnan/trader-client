@@ -45,36 +45,3 @@ ul.order li:nth-child(3) span {
         display:block;
     }
 }
-
-
-/* ----- Chart ----- */
-.chart-column {
-    margin-top: 39px;
-}
-
-.chart-container {
-    width: 100%;
-}
-.plot {
-    margin-top:200px;
-}
-
-
-.axis text {
-    font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.grid .tick line{
-    stroke: #ccc !important;
-    opacity: 0.7;
-}
-.grid path {
-    stroke-width:0;
-}
