@@ -11,7 +11,10 @@ var gulp = require('gulp');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({
-    lazy: true
+    lazy: true,
+    rename: {
+        //'gulp-ruby-sass': 'sass'
+    }
 });
 
 var colors = $.util.colors;

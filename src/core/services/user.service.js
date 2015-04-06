@@ -26,8 +26,8 @@
         function getAllUsers() {
             return $http.get(api + '/users')
                 .then(getComplete)
-                .catch(function(message) {
-                    exception.catcher('XHR Failed for userService.getAllUsers')(message);
+                .catch(function() {
+                    exception.catcher('XHR Failed for userService.getAllUsers');
                     $state.go('login');
                 });
 

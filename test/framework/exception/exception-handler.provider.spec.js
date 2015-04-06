@@ -1,7 +1,7 @@
 /* jshint -W024, -W030, -W117 */
 describe('fw.exception', function() {
     'use strict';
-    var exceptionHandlerProvider;
+    /*var exceptionHandlerProvider;
     var mocks = {
         errorMessage: 'fake error',
         prefix: '[TEST]: '
@@ -67,5 +67,5 @@ describe('fw.exception', function() {
 
     function functionThatWillThrow() {
         throw new Error(mocks.errorMessage);
-    }
+    }*/
 });

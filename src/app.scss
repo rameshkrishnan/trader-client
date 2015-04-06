@@ -2,3 +2,7 @@
 @import "core/styles/core";
 @import "dashboard/dashboard";
 @import "core/directives/barchart";
+
+#content {
+    min-height:350px;
+}

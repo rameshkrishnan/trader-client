@@ -19,7 +19,7 @@
 
         function get() {
             return $http.get(url)
-				.then(getComplete, onError);
+                .then(getComplete, onError);
 
             function getComplete(data) {
                 return data.data;

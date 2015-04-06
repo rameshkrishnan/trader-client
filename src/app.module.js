@@ -7,7 +7,6 @@
 
         // Features
         'app.dashboard',
-        'app.profile',
         'app.user'
     ]);
 })();

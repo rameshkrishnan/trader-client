@@ -1,6 +1,6 @@
 // Filter a value from a collection for the specified Key.
 // Usage:
-//     $filter('getBy')('id', id, users);
+//     $filter('getIndexBy')('key', value, collection);
 //  => "Username"
 
 (function () {

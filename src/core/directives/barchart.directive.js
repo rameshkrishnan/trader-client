@@ -8,10 +8,10 @@
         .module('app.core')
         .directive('atBarchart', barchartDirective);
 
-    barchartDirective.$inject = ['BarChart', '$window'];
+    barchartDirective.$inject = ['BarChart', '$window', '_'];
 
     /* @ngInject */
-    function barchartDirective(BarChart, $window) {
+    function barchartDirective(BarChart, $window, _) {
 
         var directive = {
             link: link,
@@ -34,7 +34,7 @@
             scope.$watch('chartdata', drawChart, true);
 
             // Redraw whenever window resizes, adding some debounce
-            angular.element($window).on('resize', $window._.debounce(resizeChart, 250));
+            angular.element($window).on('resize', _.debounce(resizeChart, 250));
 
             // Remove the redraw handler when the scope is destroyed
             // This prevents redrawing when the view containing the barchart is destroyed

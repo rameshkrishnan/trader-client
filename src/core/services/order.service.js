@@ -25,9 +25,10 @@
             instrumentService.get().then(function (instruments) {
 
                 var userId = userSessionService.getUserId(),
-                    side = ['Buy', 'Sell'];
+                    side = ['Buy', 'Sell'],
+                    i;
 
-                for (var i = 1; i <= qty; i++) {
+                for (i = 1; i <= qty; i++) {
 
                     var sideIndex = random(0, 1),
                         instrumentsIndex = random(0, instruments.length - 1),
@@ -51,8 +52,8 @@
                 logger.info('Order ' + i + ' has been successfully placed to server for execution');
             }
 
-            function postError(message) {
-                exception.catcher('XHR Failed for orderService.createOrder')(message);
+            function postError() {
+                exception.catcher('XHR Failed for orderService.createOrder');
             }
 
         }
@@ -60,8 +61,8 @@
         function deleteAll() {
             return $http.delete(url)
                 .then(getComplete)
-                .catch(function(message) {
-                    exception.catcher('XHR Failed for orderService.deleteAll')(message);
+                .catch(function() {
+                    exception.catcher('XHR Failed for orderService.deleteAll');
                 });
 
             function getComplete() {
@@ -75,8 +76,8 @@
 
             return $http.get(url)
                 .then(getComplete)
-                .catch(function(message) {
-                    exception.catcher('XHR Failed for orderService.getAll')(message);
+                .catch(function() {
+                    exception.catcher('XHR Failed for orderService.getAll');
                 });
 
             function getComplete(data) {

@@ -105,10 +105,7 @@ module.exports = function() {
          *  6 templates
          */
         testlibraries: [
-            'node_modules/mocha/mocha.js',
-            'node_modules/chai/chai.js',
-            'node_modules/mocha-clean/index.js',
-            'node_modules/sinon-chai/lib/sinon-chai.js'
+            'node_modules/karma-jasmine/lib/jasmine.js'
         ],
         specHelpers: [test + 'helpers/*.js'],
         specs: [test + '**/*.spec.js'],
@@ -151,7 +148,8 @@ module.exports = function() {
                 client + '**/*.module.js',
                 client + '**/*.js',
                 temp + config.templateCache.file,
-                config.serverIntegrationSpecs
+                config.serverIntegrationSpecs,
+                client + '**/*.directive.html'
             ),
             exclude: [],
             coverage: {
@@ -170,7 +168,9 @@ module.exports = function() {
                     {type: 'text-summary'} //, subdir: '.', file: 'text-summary.txt'}
                 ]
             },
-            preprocessors: {}
+            preprocessors: {
+                '**/*.directive.html': ['ng-html2js']
+            }
         };
         options.preprocessors[client + '**/*.js'] = ['coverage'];
         return options;

@@ -5,12 +5,12 @@
         .module('app.core')
         .factory('socketService', socketService);
 
-    socketService.$inject = ['$rootScope', 'api'];
+    socketService.$inject = ['$rootScope', 'api', 'io'];
 
     /* $ngInject */
-    function socketService($rootScope, api) {
+    function socketService($rootScope, api, io) {
 
-        var socket = window.io(api),
+        var socket = io(api),
             service = {
                 on: on,
                 remove: removeSocket

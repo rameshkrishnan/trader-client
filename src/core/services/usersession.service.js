@@ -10,7 +10,7 @@
     /* @ngInject */
     function userSessionService(exception, $state, userService) {
 
-        if ( typeof Storage === undefined ) {
+        if (typeof Storage === undefined) {
             exception.catcher('Failed to create user session')('Storage not supported by the browser');
             $state.go('login');
         }

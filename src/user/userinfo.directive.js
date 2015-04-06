@@ -12,7 +12,7 @@
 
         var directive = {
             restrict: 'E',
-            templateUrl: 'src/user/userinfo.html',
+            templateUrl: 'src/user/userinfo.directive.html',
             link: link,
             controller: UserInfoController,
                 controllerAs: 'dvm',

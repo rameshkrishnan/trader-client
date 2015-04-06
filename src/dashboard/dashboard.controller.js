@@ -70,13 +70,13 @@
                 var index = $filter('getIndexBy')('id', data.orderId, vm.orders),
                     item = vm.orders[index];
 
-                item.quantityExecuted += data.quantityExecuted;
-                item.executionPrice = data.executionPrice;
-                item.status = data.status;
+                $scope.$apply(function() {
+                    item.quantityExecuted += data.quantityExecuted;
+                    item.executionPrice = data.executionPrice;
+                    item.status = data.status;
+                });
 
-                $scope.$apply();
-
-                logger.log('executionCreatedEvent #' + data.orderId, data.quantityExecuted);
+                logger.log('executionCreatedEvent #' + data.orderId);
             }
             function orderCreatedEvent(data) {
 
@@ -89,12 +89,12 @@
                 var index = $filter('getIndexBy')('id', data.orderId, vm.orders),
                     item = vm.orders[index];
 
-                item.quantityPlaced += data.quantityPlaced;
-                item.status = data.status;
+                $scope.$apply(function() {
+                    item.quantityPlaced += data.quantityPlaced;
+                    item.status = data.status;
+                });
 
-                $scope.$apply();
-
-                logger.log('placementCreatedEvent #' + data.orderId, data.quantityPlaced);
+                logger.log('placementCreatedEvent #' + data.orderId);
             }
 
         }

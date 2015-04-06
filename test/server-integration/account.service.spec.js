@@ -9,7 +9,7 @@
 
 describe('Server: accountService', function() {
     'use strict';
-    var accountService;
+    /*var accountService;
 
     beforeEach(bard.asyncModule('app'));
 
@@ -26,5 +26,5 @@ describe('Server: accountService', function() {
                 })
                 .then(done, done);
         });
-    });
+    });*/
 });
